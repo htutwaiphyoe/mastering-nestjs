@@ -13,4 +13,8 @@ content-type: application/json
 
 ### get message by id
 
-GET http://localhost:3000/messages/kwk9xledlpul0k8lvwi
+GET http://localhost:3000/messages/kwkswh9en1rjfpfpvv
+
+
+### delete message by id
+DELETE http://localhost:3000/messages/kwkswh9en1rjfpfpvv

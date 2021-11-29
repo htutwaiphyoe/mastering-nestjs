@@ -1,24 +1,41 @@
-import { Controller, Get, Post, Body, Param } from "@nestjs/common";
+import { Controller, Get, Post, Body, Param, NotFoundException, Delete } from "@nestjs/common";
 import { CreateMessageDto } from "../dtos/createMessage.dto";
 import { MessagesService } from "../services/messages.service";
+
 @Controller("messages")
 export class MessagesController {
-    messagesService: MessagesService;
-    constructor() {
-        this.messagesService = new MessagesService();
-    }
+    constructor(public messagesService: MessagesService) {}
     @Get("/")
-    getAllMessages() {
-        return this.messagesService.findAll();
+    async getAllMessages() {
+        return {
+            status: "success",
+            data: await this.messagesService.findAll(),
+        };
     }
 
     @Post("/")
-    craeteNewMessage(@Body() body: CreateMessageDto) {
-        return this.messagesService.create(body.content);
+    async craeteNewMessage(@Body() body: CreateMessageDto) {
+        return {
+            status: "success",
+            data: await this.messagesService.create(body.content),
+        };
     }
 
     @Get("/:id")
-    getMessageById(@Param("id") id: string) {
-        return this.messagesService.findOne(id);
+    async getMessageById(@Param("id") id: string) {
+        const message = await this.messagesService.findOne(id);
+        if (!message) throw new NotFoundException("No message found!");
+        return {
+            status: "success",
+            data: message,
+        };
+    }
+
+    @Delete("/:id")
+    async deleteMessageById(@Param("id") id: string) {
+        return {
+            status: "success",
+            data: await this.messagesService.delete(id),
+        };
     }
 }
