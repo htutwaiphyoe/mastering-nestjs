@@ -5,14 +5,17 @@ import { CreateUserDto } from "./dtos/createUser.dto";
 
 @Controller("auth")
 export class UsersController {
-    constructor(private userService: UsersService) {}
+   constructor(private userService: UsersService) {}
 
-    @Post("/signup")
-    async createUser(@Body() body: CreateUserDto) {
-        const createdUser = await this.userService.create(body.email, body.password);
-        return {
-            status: "success",
-            data: createdUser,
-        };
-    }
+   @Post("/signup")
+   async createUser(@Body() body: CreateUserDto) {
+      const createdUser = await this.userService.create(
+         body.email,
+         body.password
+      );
+      return {
+         status: "success",
+         data: createdUser,
+      };
+   }
 }
