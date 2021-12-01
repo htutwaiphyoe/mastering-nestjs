@@ -1,4 +1,10 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Post, Body } from "@nestjs/common";
 
-@Controller('users')
-export class UsersController {}
+import { CreateUserDto } from "./dtos/createUser.dto";
+@Controller("auth")
+export class UsersController {
+    @Post("/signup")
+    createUser(@Body() body: CreateUserDto) {
+        return body;
+    }
+}
