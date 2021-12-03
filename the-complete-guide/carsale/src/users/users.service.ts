@@ -16,4 +16,12 @@ export class UsersService {
 
       return this.userRepo.save({ email, password });
    }
+
+   findOne(id: number) {
+      return this.userRepo.findOne(id);
+   }
+
+   find(email) {
+      return this.userRepo.find({ email });
+   }
 }
