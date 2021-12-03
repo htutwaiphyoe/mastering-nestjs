@@ -13,3 +13,6 @@ GET http://localhost:3000/auth/sdsd
 
 ### Get users
 GET http://localhost:3000/auth?email=ssfd@asdf.asdf
+
+### Delete user
+DELETE http://localhost:3000/auth/8
