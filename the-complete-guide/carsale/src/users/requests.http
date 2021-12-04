@@ -15,7 +15,7 @@ GET http://localhost:3000/auth/sdsd
 GET http://localhost:3000/auth?email=ssfd@asdf.asdf
 
 ### Update user
-PATCH http://localhost:3000/auth/11
+PATCH http://localhost:3000/auth/12
 Content-Type: application/json
 
 {
