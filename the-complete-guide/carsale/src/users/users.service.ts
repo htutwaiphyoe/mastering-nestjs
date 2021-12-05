@@ -14,7 +14,7 @@ export class UsersService {
       password,
     });
 
-    return this.userRepo.save({ email, password });
+    return this.userRepo.save(user);
   }
 
   async findOne(id: number) {

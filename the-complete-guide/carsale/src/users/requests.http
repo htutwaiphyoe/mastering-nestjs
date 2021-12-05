@@ -8,18 +8,18 @@ content-type: application/json
 }
 
 ### Get a user
-GET http://localhost:3000/auth/sdsd
+GET http://localhost:3000/auth/9
 
 
 ### Get users
 GET http://localhost:3000/auth?email=ssfd@asdf.asdf
 
 ### Update user
-PATCH http://localhost:3000/auth/12
+PATCH http://localhost:3000/auth/10
 Content-Type: application/json
 
 {
-    "password": "asssdf"
+    "passdsfsdfword": "asssdf"
 }
 
 ### Delete user
