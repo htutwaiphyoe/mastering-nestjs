@@ -4,6 +4,7 @@ import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dtos/createUser.dto";
 import { UpdateUserDto } from "./dtos/updateUser.dto";
 import { SerializeInterceptor } from "src/interceptors/serialize.interceptor";
+import { UsersDto } from "./dtos/users.dto";
 
 @Controller("auth")
 export class UsersController {
@@ -18,7 +19,7 @@ export class UsersController {
     };
   }
 
-  @UseInterceptors(SerializeInterceptor)
+  @UseInterceptors(new SerializeInterceptor(UsersDto))
   @Get("/:id")
   async findUser(@Param("id") id: string) {
     const user = await this.userService.findOne(+id);
