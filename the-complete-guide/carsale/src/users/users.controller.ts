@@ -22,10 +22,7 @@ export class UsersController {
   @Get("/:id")
   async findUser(@Param("id") id: string) {
     const user = await this.userService.findOne(+id);
-    return {
-      status: "success",
-      data: user,
-    };
+    return user;
   }
 
   @Get("/")
