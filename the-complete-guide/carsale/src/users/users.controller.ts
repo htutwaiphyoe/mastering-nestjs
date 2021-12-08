@@ -7,19 +7,16 @@ import { Serialize } from "src/interceptors/serialize.interceptor";
 import { UsersDto } from "./dtos/users.dto";
 
 @Controller("auth")
+@Serialize(UsersDto)
 export class UsersController {
   constructor(private userService: UsersService) {}
 
   @Post("/signup")
   async createUser(@Body() body: CreateUserDto) {
     const createdUser = await this.userService.create(body.email, body.password);
-    return {
-      status: "success",
-      data: createdUser,
-    };
+    return createdUser;
   }
 
-  @Serialize(UsersDto)
   @Get("/:id")
   async findUser(@Param("id") id: string) {
     const user = await this.userService.findOne(+id);
@@ -29,27 +26,18 @@ export class UsersController {
   @Get("/")
   async find(@Query("email") email: string) {
     const user = await this.userService.find(email);
-    return {
-      status: "success",
-      data: user,
-    };
+    return user;
   }
 
   @Patch("/:id")
   async updateUser(@Param("id") id: string, @Body() body: UpdateUserDto) {
     const user = await this.userService.update(+id, body);
-    return {
-      status: "success",
-      data: user,
-    };
+    return user;
   }
 
   @Delete("/:id")
   async deleteUser(@Param("id") id: string) {
     const user = await this.userService.remove(+id);
-    return {
-      status: "success",
-      data: user,
-    };
+    return user;
   }
 }
