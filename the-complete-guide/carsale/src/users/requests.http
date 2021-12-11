@@ -7,6 +7,16 @@ content-type: application/json
     "password": "ok"
 }
 
+### SignIn 
+POST  http://localhost:3000/auth/signin
+content-type: application/json
+
+{
+    "email": "ssfd1@asdf.aa",
+    "password": "ok"
+}
+
+
 ### Get a user
 GET http://localhost:3000/auth/11
 
